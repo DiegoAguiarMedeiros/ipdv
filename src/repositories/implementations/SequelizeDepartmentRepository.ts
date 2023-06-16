@@ -5,11 +5,11 @@ import DepartmentModel from '../models/DepartmentModel';
 export default class SequelizeDepartmentRepository implements IDepartmentRepository {
     async departmentExists(id: number): Promise<boolean> {
         const result = await DepartmentModel.findOne({ where: { id } });
-        console.log('result', result)
         return result !== null;
     }
-    findById(id: string): Promise<Department> {
-        throw new Error('Method not implemented.');
+    async findById(id: number): Promise<Department> {
+        const result = await DepartmentModel.findOne({ where: { id } });
+        return new Department({ ...result.dataValues });
     }
     getAllDepartments(): Promise<Department[]> {
         throw new Error('Method not implemented.');
@@ -19,10 +19,20 @@ export default class SequelizeDepartmentRepository implements IDepartmentReposit
         const savedDepartment = await newDepartment.save()
         return new Department({ ...savedDepartment.dataValues })
     }
-    update(id: string, params: any): Promise<Department> {
-        throw new Error('Method not implemented.');
+    async update(id: number, params: any): Promise<Department> {
+        try {
+            const department = await DepartmentModel.findByPk(id);
+            if (!department) {
+                throw new Error('department not found');
+            }
+            Object.assign(department, params);
+            const savedDepartment = await department.save()
+            return new Department({ ...savedDepartment.dataValues })
+        } catch (error) {
+            throw new Error('Failed to update department');
+        }
     }
-    delete(id: string): Promise<void> {
+    delete(id: number): Promise<void> {
         throw new Error('Method not implemented.');
     }
 

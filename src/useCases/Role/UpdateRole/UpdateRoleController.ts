@@ -5,7 +5,7 @@ export default class UpdateRoleController {
   constructor(private UpdateRoleUseCase: UpdateRoleUseCase) { }
 
   handle = async (req: Request, res: Response): Promise<Response> => {
-    const { body, params, query } = req;
+    const { body, params } = req;
     const roleId = params.id;
     const {
       name
