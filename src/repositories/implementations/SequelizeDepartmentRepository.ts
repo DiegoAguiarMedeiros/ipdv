@@ -11,8 +11,10 @@ export default class SequelizeDepartmentRepository implements IDepartmentReposit
         const result = await DepartmentModel.findOne({ where: { id } });
         return new Department({ ...result.dataValues });
     }
-    getAllDepartments(): Promise<Department[]> {
-        throw new Error('Method not implemented.');
+    async getAll(): Promise<Department[]> {
+        const result = await DepartmentModel.findAll();
+        console.log('result', result)
+        return result.map((department) => new Department({ ...department.dataValues }));
     }
     async save(department: Department): Promise<Department> {
         const newDepartment = DepartmentModel.build({ ...department });
