@@ -15,6 +15,8 @@ import updateCostCenterController from "./useCases/CostCenter/UpdateCostCenter";
 import createDepartmentController from "./useCases/Department/CreateDepartment";
 import updateDepartmentController from "./useCases/Department/UpdateDepartment";
 import getAllDepartmentController from "./useCases/Department/GetAllDepartment";
+import getDepartmentController from "./useCases/Department/GetDepartment";
+
 const router = Router();
 
 router.post("/auth", authenticateController.handle);
@@ -32,5 +34,6 @@ router.put("/costCenter/:id", updateCostCenterController.handle);
 router.post("/department", createDepartmentController.handle);
 router.put("/department/:id", updateDepartmentController.handle);
 router.get("/department", getAllDepartmentController.handle);
+router.get("/department/:id", getDepartmentController.handle);
 
 export default router;
