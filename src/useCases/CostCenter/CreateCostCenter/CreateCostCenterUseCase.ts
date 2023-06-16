@@ -4,7 +4,7 @@ import CostCenter from '../../../entities/CostCenter';
 
 export default class CreateCostCenterUseCase {
   constructor(
-    private CostCenterRepository: ICostCenterRepository,
+    private costCenterRepository: ICostCenterRepository,
   ) { }
 
   execute = async (
@@ -13,7 +13,6 @@ export default class CreateCostCenterUseCase {
     const costCenter = new CostCenter({
       name
     });
-    console.log('costCenter',costCenter)
-    return await this.CostCenterRepository.save(costCenter)
+    return await this.costCenterRepository.save(costCenter)
   };
 }

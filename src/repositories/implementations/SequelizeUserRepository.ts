@@ -3,14 +3,14 @@ import User from '../../entities/User';
 import UserModel from '../models/UserModel';
 
 export default class SequelizeUserRepository implements IUserRepository {
-    async emailExist(email: string): Promise<Boolean> {
+    async emailExist(email: string): Promise<boolean> {
         const result = await UserModel.findOne({ where: { email } });
         return result !== null;
     }
-    findByUsernameWithPassword(userId: string): Promise<User> {
+    findByUsernameWithPassword(id: string): Promise<User> {
         throw new Error('Method not implemented.');
     }
-    findById(userId: string): Promise<User> {
+    findById(id: string): Promise<User> {
         throw new Error('Method not implemented.');
     }
     getAllUsers(): Promise<User[]> {
@@ -18,18 +18,13 @@ export default class SequelizeUserRepository implements IUserRepository {
     }
     async save(user: User): Promise<User> {
         const newUser = UserModel.build({ ...user });
-        newUser.save()
-            .then((savedUser) => {
-                return savedUser.dataValues 
-            })
-            .catch((error) => {
-                console.error('Error saving user:', error);
-            });
+        const savedUser = await newUser.save()
+        return new User({ ...savedUser.dataValues })
     }
-    update(userId: string, params: any): Promise<User> {
+    update(id: string, params: any): Promise<User> {
         throw new Error('Method not implemented.');
     }
-    delete(userId: string): Promise<void> {
+    delete(id: string): Promise<void> {
         throw new Error('Method not implemented.');
     }
 }

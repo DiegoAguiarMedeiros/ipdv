@@ -3,7 +3,7 @@ import CostCenter from '../../entities/CostCenter';
 import CostCenterModel from '../models/CostCenterModel';
 
 export default class SequelizeCostCenterRepository implements ICostCenterRepository {
-    findById(costCenterId: string): Promise<CostCenter> {
+    findById(id: string): Promise<CostCenter> {
         throw new Error('Method not implemented.');
     }
     getAllCostCenters(): Promise<CostCenter[]> {
@@ -15,10 +15,10 @@ export default class SequelizeCostCenterRepository implements ICostCenterReposit
         return new CostCenter({ ...savedCostCenter.dataValues })
     }
 
-    update(costCenterId: string, params: any): Promise<CostCenter> {
+    update(id: string, params: any): Promise<CostCenter> {
         throw new Error('Method not implemented.');
     }
-    delete(costCenterId: string): Promise<void> {
+    delete(id: string): Promise<void> {
         throw new Error('Method not implemented.');
     }
 

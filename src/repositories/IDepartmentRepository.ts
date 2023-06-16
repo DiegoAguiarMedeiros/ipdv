@@ -1,9 +1,10 @@
 import Department from "../entities/Department";
 
 export interface IDepartmentRepository {
-  findById(departmentId: string): Promise<Department>;
+  findById(id: string): Promise<Department>;
+  departmentExists(id: number): Promise<boolean>;
   getAllDepartments(): Promise<Department[]>;
   save(department: Department): Promise<Department>;
-  update(departmentId: string, params: any): Promise<Department>;
-  delete(departmentId: string): Promise<void>;
+  update(id: string, params: any): Promise<Department>;
+  delete(id: string): Promise<void>;
 }

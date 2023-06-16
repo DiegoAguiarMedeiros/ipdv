@@ -8,20 +8,32 @@ export default class User {
 
   public password: string;
 
-  public createAt?: Date = null;
+  public roleId: number;
 
-  public updateAt?: Date = null;
+  public departmentId: number;
+
+  public createdAt?: Date = null;
+
+  public updatedAt?: Date = null;
 
   public lastLogin?: Date = null;
 
 
   constructor(props: User) {
     const {
+      roleId,
+      departmentId,
       password,
       email,
       username
     } = props;
 
+    if (!roleId) {
+      throw new Error('User: roleId is invalid.');
+    }
+    if (!departmentId) {
+      throw new Error('User: departmentId is invalid.');
+    }
     if (!username || username.length === 0) {
       throw new Error('User: username is invalid.');
     }

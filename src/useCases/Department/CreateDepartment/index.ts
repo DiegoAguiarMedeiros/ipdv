@@ -1,4 +1,4 @@
-import SequilezeDepartmentRepository from '../../../repositories/implementations/SequelizeDeprtmentRepository';
+import SequilezeDepartmentRepository from '../../../repositories/implementations/SequelizeDepartmentRepository';
 
 import CreateDepartmentUseCase from './CreateDepartmentUseCase';
 import CreateDepartmentController from './CreateDepartmentController';

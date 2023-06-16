@@ -1,9 +1,10 @@
 import Role from "../entities/Role";
 
 export interface IRoleRepository {
-  findById(roleId: string): Promise<Role>;
+  findById(id: string): Promise<Role>;
+  roleExists(id: number): Promise<boolean>;
   getAllRoles(): Promise<Role[]>;
   save(role: Role): Promise<Role>;
-  update(roleId: string, params: any): Promise<Role>;
-  delete(roleId: string): Promise<void>;
+  update(id: string, params: any): Promise<Role>;
+  delete(id: string): Promise<void>;
 }
