@@ -4,6 +4,8 @@ export default class User {
 
   public username: string;
 
+  public email: string;
+
   public password: string;
 
   public createAt?: Date = null;
@@ -15,21 +17,20 @@ export default class User {
 
   constructor(props: User) {
     const {
-      id,
       password,
+      email,
       username
     } = props;
-
-    if (!id) {
-      throw new Error('User: not found.');
-    }
-
 
     if (!username || username.length === 0) {
       throw new Error('User: username is invalid.');
     }
 
-    if (!id && (!password || password.length === 0)) {
+    if (!email || email.length === 0) {
+      throw new Error('User: email is invalid.');
+    }
+
+    if (!password || password.length === 0) {
       throw new Error('User: password is invalid.');
     }
 

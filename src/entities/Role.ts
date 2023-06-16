@@ -4,20 +4,15 @@ export default class Role {
 
   public name: string;
 
-  public createAt?: Date = null;
+  public createdAt?: Date = null;
 
-  public updateAt?: Date = null;
+  public updatedAt?: Date = null;
 
 
   constructor(props: Role) {
     const {
-      id,
       name
     } = props;
-
-    if (!id) {
-      throw new Error('Role: not found.');
-    }
 
     if (!name || name.length === 0) {
       throw new Error('Role: name is invalid.');
