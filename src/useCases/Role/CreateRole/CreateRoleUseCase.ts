@@ -13,7 +13,6 @@ export default class CreateRoleUseCase {
     const role = new Role({
       name
     });
-    console.log('role', role)
     return await this.RoleRepository.save(role)
   };
 }

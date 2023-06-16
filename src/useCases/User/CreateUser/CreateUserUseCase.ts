@@ -60,7 +60,6 @@ export default class CreateUserUseCase {
       roleId,
       departmentId
     });
-    console.log('user', user)
     return await this.userRepository.save(user)
   };
 }

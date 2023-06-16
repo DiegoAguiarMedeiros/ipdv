@@ -15,7 +15,6 @@ export default class CreateDepartmentUseCase {
       name,
       costCenterId
     });
-    console.log('Department', Department)
     return await this.DepartmentRepository.save(department)
   };
 }

@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import GetAllDepartmentUseCase from './GetAllDepartmentUseCase';
+import logger from '../../../config/logger';
 
 export default class GetAllDepartmentController {
   constructor(private GetAllDepartmentUseCase: GetAllDepartmentUseCase) { }
@@ -10,7 +11,7 @@ export default class GetAllDepartmentController {
       const result = await this.GetAllDepartmentUseCase.execute();
       return res.status(200).json(result);
     } catch (err) {
-      console.log(err);
+      logger.error(err);
       return res.status(400).json({
         message: err.message || 'Unexpected error.',
       });

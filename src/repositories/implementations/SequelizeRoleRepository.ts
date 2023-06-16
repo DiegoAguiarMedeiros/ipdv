@@ -13,7 +13,6 @@ export default class SequelizeRoleRepository implements IRoleRepository {
     }
     async getAllRoles(): Promise<Role[]> {
         const result = await RoleModel.findAll();
-        console.log('result', result)
         return result.map((role) => new Role({ ...role.dataValues }));
     }
     async save(role: Role): Promise<Role> {

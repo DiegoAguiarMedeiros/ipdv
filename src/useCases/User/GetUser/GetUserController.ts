@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import GetUserUseCase from './GetUserUseCase';
+import logger from '../../../config/logger';
 
 export default class GetUserController {
   constructor(private GetUserUseCase: GetUserUseCase) { }
@@ -14,7 +15,7 @@ export default class GetUserController {
 
       return res.status(200).json(result);
     } catch (err) {
-      console.log(err);
+      logger.error(err);
       return res.status(400).json({
         message: err.message || 'Unexpected error.',
       });

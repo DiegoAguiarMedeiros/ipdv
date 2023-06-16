@@ -20,7 +20,6 @@ export default class UpdateDepartmentUseCase {
       name: name ? name : oldDepartment.name,
       costCenterId: costCenterId ? costCenterId : oldDepartment.costCenterId
     });
-    console.log('Department', Department)
     return await this.DepartmentRepository.update(departmentId, department)
   };
 }

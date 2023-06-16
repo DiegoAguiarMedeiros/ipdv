@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import CreateRoleUseCase from './CreateRoleUseCase';
+import logger from '../../../config/logger';
 
 export default class CreateRoleController {
   constructor(private createRoleUseCase: CreateRoleUseCase) { }
@@ -16,7 +17,7 @@ export default class CreateRoleController {
       );
       return res.status(201).json(result);
     } catch (err) {
-      console.log(err);
+      logger.error(err);
       return res.status(400).json({
         message: err.message || 'Unexpected error.',
       });

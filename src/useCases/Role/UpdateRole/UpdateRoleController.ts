@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import UpdateRoleUseCase from './UpdateRoleUseCase';
+import logger from '../../../config/logger';
 
 export default class UpdateRoleController {
   constructor(private UpdateRoleUseCase: UpdateRoleUseCase) { }
@@ -18,7 +19,7 @@ export default class UpdateRoleController {
       );
       return res.status(200).json(result);
     } catch (err) {
-      console.log(err);
+      logger.error(err);
       return res.status(400).json({
         message: err.message || 'Unexpected error.',
       });

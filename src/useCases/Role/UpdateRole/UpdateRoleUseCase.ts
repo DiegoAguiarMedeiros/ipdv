@@ -14,7 +14,6 @@ export default class UpdateRoleUseCase {
     const role = new Role({
       name
     });
-    console.log('role', role)
     return await this.RoleRepository.update(roleId, role)
   };
 }

@@ -49,7 +49,6 @@ export default class UpdateUserUseCase {
     }
 
     const oldUser = await this.userRepository.findById(userId)
-    console.log('oldUser', oldUser)
     const user = new User({
       ...oldUser,
       username: username ? username : oldUser.username,
@@ -57,7 +56,6 @@ export default class UpdateUserUseCase {
       roleId: roleId ? roleId : oldUser.roleId,
       departmentId: departmentId ? departmentId : oldUser.departmentId,
     });
-    console.log('user', user)
     return await this.userRepository.update(userId, user)
   };
 }

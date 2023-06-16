@@ -13,7 +13,6 @@ export default class SequelizeDepartmentRepository implements IDepartmentReposit
     }
     async getAll(): Promise<Department[]> {
         const result = await DepartmentModel.findAll();
-        console.log('result', result)
         return result.map((department) => new Department({ ...department.dataValues }));
     }
     async save(department: Department): Promise<Department> {

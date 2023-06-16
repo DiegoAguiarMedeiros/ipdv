@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import UpdateDepartmentUseCase from './UpdateDepartmentUseCase';
+import logger from '../../../config/logger';
 
 export default class UpdateDepartmentController {
   constructor(private UpdateDepartmentUseCase: UpdateDepartmentUseCase) { }
@@ -20,7 +21,7 @@ export default class UpdateDepartmentController {
       );
       return res.status(200).json(result);
     } catch (err) {
-      console.log(err);
+      logger.error(err);
       return res.status(400).json({
         message: err.message || 'Unexpected error.',
       });
