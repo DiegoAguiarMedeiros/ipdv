@@ -1,22 +1,24 @@
 export default class Depatment {
   // TODO mudar _id para id
-  public id: string;
+  public id?: string;
 
   public name: string;
 
-  public createAt?: Date = null;
+  public costCenterId: number;
 
-  public updateAt?: Date = null;
+  public createdAt?: Date = null;
+
+  public updatedAt?: Date = null;
 
 
   constructor(props: Depatment) {
     const {
-      id,
+      costCenterId,
       name
     } = props;
 
-    if (!id) {
-      throw new Error('Depatment: not found.');
+    if (!costCenterId) {
+      throw new Error('Depatment: costCenterId is invalid.');
     }
 
     if (!name || name.length === 0) {

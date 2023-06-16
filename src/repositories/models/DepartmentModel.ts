@@ -22,6 +22,10 @@ Department.init(
       allowNull: false,
       unique: true,
     },
+    costCenterId: {
+      type: DataTypes.BIGINT,
+      allowNull: false,
+    },
     createdAt: {
       type: DataTypes.DATE,
       allowNull: false,

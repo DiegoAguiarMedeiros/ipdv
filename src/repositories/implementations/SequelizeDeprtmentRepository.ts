@@ -9,8 +9,10 @@ export default class SequelizeDepartmentRepository implements IDepartmentReposit
     getAllDepartments(): Promise<Department[]> {
         throw new Error('Method not implemented.');
     }
-    save(department: Department): Promise<Department> {
-        throw new Error('Method not implemented.');
+    async save(department: Department): Promise<Department> {
+        const newDepartment = DepartmentModel.build({ ...department });
+        const savedDepartment = await newDepartment.save()
+        return new Department({ ...savedDepartment.dataValues })
     }
     update(departmentId: string, params: any): Promise<Department> {
         throw new Error('Method not implemented.');
