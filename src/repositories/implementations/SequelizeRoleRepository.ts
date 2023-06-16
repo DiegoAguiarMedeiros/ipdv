@@ -7,7 +7,7 @@ export default class SequelizeRoleRepository implements IRoleRepository {
         const result = await RoleModel.findOne({ where: { id } });
         return result !== null;
     }
-    findById(id: string): Promise<Role> {
+    findById(id: number): Promise<Role> {
         throw new Error('Method not implemented.');
     }
     getAllRoles(): Promise<Role[]> {
@@ -31,7 +31,7 @@ export default class SequelizeRoleRepository implements IRoleRepository {
             throw new Error('Failed to update role');
         }
     }
-    delete(id: string): Promise<void> {
+    delete(id: number): Promise<void> {
         throw new Error('Method not implemented.');
     }
 
