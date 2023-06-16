@@ -12,6 +12,7 @@ import getRoleController from "./useCases/Role/GetRole";
 import createCostCenterController from "./useCases/CostCenter/CreateCostCenter";
 import updateCostCenterController from "./useCases/CostCenter/UpdateCostCenter";
 import getAllCostCenterController from "./useCases/CostCenter/GetAllCostCenter";
+import getCostCenterController from "./useCases/CostCenter/GetCostCenter";
 
 import createDepartmentController from "./useCases/Department/CreateDepartment";
 import updateDepartmentController from "./useCases/Department/UpdateDepartment";
@@ -32,6 +33,7 @@ router.get("/role/:id", getRoleController.handle);
 router.post("/costCenter", createCostCenterController.handle);
 router.put("/costCenter/:id", updateCostCenterController.handle);
 router.get("/costCenter", getAllCostCenterController.handle);
+router.get("/costCenter/:id", getCostCenterController.handle);
 
 router.post("/department", createDepartmentController.handle);
 router.put("/department/:id", updateDepartmentController.handle);

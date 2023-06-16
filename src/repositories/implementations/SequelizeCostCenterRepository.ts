@@ -3,8 +3,9 @@ import CostCenter from '../../entities/CostCenter';
 import CostCenterModel from '../models/CostCenterModel';
 
 export default class SequelizeCostCenterRepository implements ICostCenterRepository {
-    findById(id: number): Promise<CostCenter> {
-        throw new Error('Method not implemented.');
+    async findById(id: number): Promise<CostCenter> {
+        const result = await CostCenterModel.findOne({ where: { id } });
+        return new CostCenter({ ...result.dataValues });
     }
     async getAll(): Promise<CostCenter[]> {
         const result = await CostCenterModel.findAll();
