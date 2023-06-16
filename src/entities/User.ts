@@ -6,7 +6,7 @@ export default class User {
 
   public email: string;
 
-  public password: string;
+  public password?: string;
 
   public roleId: number;
 
@@ -23,7 +23,6 @@ export default class User {
     const {
       roleId,
       departmentId,
-      password,
       email,
       username
     } = props;
@@ -40,10 +39,6 @@ export default class User {
 
     if (!email || email.length === 0) {
       throw new Error('User: email is invalid.');
-    }
-
-    if (!password || password.length === 0) {
-      throw new Error('User: password is invalid.');
     }
 
     Object.assign(this, props);

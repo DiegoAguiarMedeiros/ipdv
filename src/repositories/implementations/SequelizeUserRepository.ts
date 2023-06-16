@@ -18,8 +18,12 @@ export default class SequelizeUserRepository implements IUserRepository {
         const result = await UserModel.findOne({ where: { id } });
         return new User({ ...result.dataValues });
     }
-    getAllUsers(): Promise<User[]> {
-        throw new Error('Method not implemented.');
+    async getAll(): Promise<User[]> {
+        const result = await UserModel.findAll({
+            attributes: { exclude: ['password'] },
+          });
+        console.log('result', result)
+        return result.map((user) => new User({ ...user.dataValues }));
     }
     async save(user: User): Promise<User> {
         const newUser = UserModel.build({ ...user });
