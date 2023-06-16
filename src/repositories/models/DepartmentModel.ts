@@ -23,7 +23,7 @@ Department.init(
       unique: true,
     },
     costCenterId: {
-      type: DataTypes.BIGINT,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     createdAt: {
