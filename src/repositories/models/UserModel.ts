@@ -1,6 +1,5 @@
 import { Model, DataTypes } from 'sequelize';
 import sequelize from '../../config/sequelize';
-
 class User extends Model {
     static associate(models) {
         User.belongsTo(models.Role, {
@@ -29,14 +28,16 @@ User.init(
         createdAt: {
             type: DataTypes.DATE,
             allowNull: false,
+            defaultValue: DataTypes.NOW,
         },
         updatedAt: {
             type: DataTypes.DATE,
             allowNull: false,
+            defaultValue: DataTypes.NOW,
         },
         lastLogin: {
             type: DataTypes.DATE,
-            allowNull: false,
+            allowNull: true,
         },
     },
     {
