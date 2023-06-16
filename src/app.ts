@@ -5,7 +5,7 @@ import 'dotenv/config';
 import bodyParser from 'body-parser';
 import logger from './config/logger';
 import initDB from './config/postgresConfig';
-
+import publicRoutes from './publicRoutes';
 
 initDB();
 
@@ -33,6 +33,7 @@ app.use((req, res, next) => {
 });
 
 app.use(morgan('dev'));
+app.use(publicRoutes);
 
 const port = process.env.PORT || 3001;
 
