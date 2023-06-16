@@ -3,7 +3,8 @@ import authenticateController from "./useCases/Authenticate";
 
 import createUserController from "./useCases/User/CreateUser";
 import updateUserController from "./useCases/User/UpdateUser";
-import getUserController from "./useCases/User/GetAllUser";
+import getAllUserController from "./useCases/User/GetAllUser";
+import getUserController from "./useCases/User/GetUser";
 
 import createRoleController from "./useCases/Role/CreateRole";
 import updateRoleController from "./useCases/Role/UpdateRole";
@@ -23,9 +24,11 @@ import getDepartmentController from "./useCases/Department/GetDepartment";
 const router = Router();
 
 router.post("/auth", authenticateController.handle);
+
 router.post("/users", createUserController.handle);
 router.put("/users/:id", updateUserController.handle);
-router.get("/users", getUserController.handle);
+router.get("/users", getAllUserController.handle);
+router.get("/users/:id", getUserController.handle);
 
 router.post("/role", createRoleController.handle);
 router.put("/role/:id", updateRoleController.handle);
