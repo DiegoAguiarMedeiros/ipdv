@@ -6,6 +6,7 @@ import updateUserController from "./useCases/User/UpdateUser";
 
 import createRoleController from "./useCases/Role/CreateRole";
 import updateRoleController from "./useCases/Role/UpdateRole";
+import getAllRoleController from "./useCases/Role/GetAllRole";
 
 import createCostCenterController from "./useCases/CostCenter/CreateCostCenter";
 import updateCostCenterController from "./useCases/CostCenter/UpdateCostCenter";
@@ -20,6 +21,7 @@ router.put("/users/:id", updateUserController.handle);
 
 router.post("/role", createRoleController.handle);
 router.put("/role/:id", updateRoleController.handle);
+router.get("/role", getAllRoleController.handle);
 
 router.post("/costCenter", createCostCenterController.handle);
 router.put("/costCenter/:id", updateCostCenterController.handle);

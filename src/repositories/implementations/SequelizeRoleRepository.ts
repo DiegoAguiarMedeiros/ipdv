@@ -10,8 +10,10 @@ export default class SequelizeRoleRepository implements IRoleRepository {
     findById(id: number): Promise<Role> {
         throw new Error('Method not implemented.');
     }
-    getAllRoles(): Promise<Role[]> {
-        throw new Error('Method not implemented.');
+    async getAllRoles(): Promise<Role[]> {
+        const result = await RoleModel.findAll();
+        console.log('result', result)
+        return result.map((role) => new Role({ ...role.dataValues }));
     }
     async save(role: Role): Promise<Role> {
         const newRole = RoleModel.build({ ...role });
