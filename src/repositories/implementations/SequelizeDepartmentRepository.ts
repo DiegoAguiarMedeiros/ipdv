@@ -3,7 +3,12 @@ import Department from '../../entities/Department';
 import DepartmentModel from '../models/DepartmentModel';
 
 export default class SequelizeDepartmentRepository implements IDepartmentRepository {
-    findById(departmentId: string): Promise<Department> {
+    async departmentExists(id: number): Promise<boolean> {
+        const result = await DepartmentModel.findOne({ where: { id } });
+        console.log('result', result)
+        return result !== null;
+    }
+    findById(id: string): Promise<Department> {
         throw new Error('Method not implemented.');
     }
     getAllDepartments(): Promise<Department[]> {
@@ -14,10 +19,10 @@ export default class SequelizeDepartmentRepository implements IDepartmentReposit
         const savedDepartment = await newDepartment.save()
         return new Department({ ...savedDepartment.dataValues })
     }
-    update(departmentId: string, params: any): Promise<Department> {
+    update(id: string, params: any): Promise<Department> {
         throw new Error('Method not implemented.');
     }
-    delete(departmentId: string): Promise<void> {
+    delete(id: string): Promise<void> {
         throw new Error('Method not implemented.');
     }
 
