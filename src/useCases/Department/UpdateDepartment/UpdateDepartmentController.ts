@@ -14,9 +14,9 @@ export default class UpdateDepartmentController {
 
     try {
       const result = await this.UpdateDepartmentUseCase.execute(
+        departmentId,
         name,
         costCenterId,
-        departmentId
       );
       return res.status(201).json(result);
     } catch (err) {

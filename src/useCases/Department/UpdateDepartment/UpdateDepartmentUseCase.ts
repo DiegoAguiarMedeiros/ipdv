@@ -8,9 +8,9 @@ export default class UpdateDepartmentUseCase {
   ) { }
 
   execute = async (
+    departmentId: number,
     name?: string,
-    costCenterId?: number,
-    departmentId?: number
+    costCenterId?: number
   ): Promise<Department> => {
 
     const oldDepartment = await this.DepartmentRepository.findById(departmentId)
