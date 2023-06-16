@@ -7,7 +7,7 @@ export default class GetAllRoleController {
   handle = async (req: Request, res: Response): Promise<Response> => {
     try {
       const result = await this.GetAllRoleUseCase.execute();
-      return res.status(201).json(result);
+      return res.status(200).json(result);
     } catch (err) {
       console.log(err);
       return res.status(400).json({
