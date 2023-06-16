@@ -5,6 +5,6 @@ export interface IRoleRepository {
   roleExists(id: number): Promise<boolean>;
   getAllRoles(): Promise<Role[]>;
   save(role: Role): Promise<Role>;
-  update(id: string, params: any): Promise<Role>;
+  update(id: number, params: any): Promise<Role>;
   delete(id: string): Promise<void>;
 }

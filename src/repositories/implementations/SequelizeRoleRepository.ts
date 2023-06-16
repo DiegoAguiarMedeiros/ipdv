@@ -18,8 +18,18 @@ export default class SequelizeRoleRepository implements IRoleRepository {
         const savedRole = await newRole.save()
         return new Role({ ...savedRole.dataValues })
     }
-    update(id: string, params: any): Promise<Role> {
-        throw new Error('Method not implemented.');
+    async update(id: number, params: any): Promise<Role> {
+        try {
+            const role = await RoleModel.findByPk(id);
+            if (!role) {
+                throw new Error('Role not found');
+            }
+            Object.assign(role, params);
+            const savedRole = await role.save()
+            return new Role({ ...savedRole.dataValues })
+        } catch (error) {
+            throw new Error('Failed to update role');
+        }
     }
     delete(id: string): Promise<void> {
         throw new Error('Method not implemented.');
