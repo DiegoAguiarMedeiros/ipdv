@@ -9,9 +9,12 @@ export default class SequelizeCostCenterRepository implements ICostCenterReposit
     getAllCostCenters(): Promise<CostCenter[]> {
         throw new Error('Method not implemented.');
     }
-    save(costCenter: CostCenter): Promise<CostCenter> {
-        throw new Error('Method not implemented.');
+    async save(costCenter: CostCenter): Promise<CostCenter> {
+        const newCostCenter = CostCenterModel.build({ ...costCenter });
+        const savedCostCenter = await newCostCenter.save()
+        return new CostCenter({ ...savedCostCenter.dataValues })
     }
+
     update(costCenterId: string, params: any): Promise<CostCenter> {
         throw new Error('Method not implemented.');
     }

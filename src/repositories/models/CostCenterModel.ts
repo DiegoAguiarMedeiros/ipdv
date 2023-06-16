@@ -24,13 +24,12 @@ CostCenter.init(
     },
     updatedAt: {
       type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
+      allowNull: true,
     }
   },
   {
     sequelize,
-    modelName: 'Department',
+    modelName: 'CostCenter',
   }
 );
 
