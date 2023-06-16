@@ -7,11 +7,16 @@ export default class SequelizeUserRepository implements IUserRepository {
         const result = await UserModel.findOne({ where: { email } });
         return result !== null;
     }
+    async usernameExist(username: string): Promise<boolean> {
+        const result = await UserModel.findOne({ where: { username } });
+        return result !== null;
+    }
     findByUsernameWithPassword(id: string): Promise<User> {
         throw new Error('Method not implemented.');
     }
-    findById(id: string): Promise<User> {
-        throw new Error('Method not implemented.');
+    async findById(id: number): Promise<User> {
+        const result = await UserModel.findOne({ where: { id } });
+        return new User({ ...result.dataValues });
     }
     getAllUsers(): Promise<User[]> {
         throw new Error('Method not implemented.');
@@ -21,10 +26,20 @@ export default class SequelizeUserRepository implements IUserRepository {
         const savedUser = await newUser.save()
         return new User({ ...savedUser.dataValues })
     }
-    update(id: string, params: any): Promise<User> {
-        throw new Error('Method not implemented.');
+    async update(id: number, params: any): Promise<User> {
+        try {
+            const user = await UserModel.findByPk(id);
+            if (!user) {
+                throw new Error('user not found');
+            }
+            Object.assign(user, params);
+            const savedUser = await user.save()
+            return new User({ ...savedUser.dataValues })
+        } catch (error) {
+            throw new Error('Failed to update user');
+        }
     }
-    delete(id: string): Promise<void> {
+    delete(id: number): Promise<void> {
         throw new Error('Method not implemented.');
     }
 }

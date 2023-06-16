@@ -1,6 +1,8 @@
 import { Router } from "express";
 import authenticateController from "./useCases/Authenticate";
+
 import createUserController from "./useCases/User/CreateUser";
+import updateUserController from "./useCases/User/UpdateUser";
 
 import createRoleController from "./useCases/Role/CreateRole";
 import updateRoleController from "./useCases/Role/UpdateRole";
@@ -14,6 +16,7 @@ const router = Router();
 
 router.post("/auth", authenticateController.handle);
 router.post("/users", createUserController.handle);
+router.put("/users/:id", updateUserController.handle);
 
 router.post("/role", createRoleController.handle);
 router.put("/role/:id", updateRoleController.handle);
